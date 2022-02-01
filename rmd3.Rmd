@@ -1,0 +1,189 @@
+---
+title: "PCA Linking Districtwise Progress"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning=FALSE,message=F)
+
+```
+
+1991
+```{r,echo=F}
+library(readxl)
+library(kableExtra)
+pca91 <- read_excel("1991.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca91)<- c("dist","status")
+  pca91$status<-gsub("29","Linked",pca91$status)
+  pca91$status[is.na(pca91$status)] <- "Notlinked"
+  pca91<-as.data.frame.matrix(table(pca91))
+  pca91$Total<-pca91$Linked+pca91$Notlinked
+  pca91$complete<-paste(round(pca91$Linked/pca91$Total*100,1),"%")
+  pca91$District<-row.names(pca91)
+  row.names(pca91)<-NULL
+  Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1991",c("District","Assignee")]
+  pca91$Assignee<-Assignee$Assignee
+pca91$Status<-ifelse(pca91$Notlinked==0,"Complete","Incomplete")
+pca91<-pca91[,c("District","Total","Linked","Notlinked","complete","Assignee","Status")]
+kbl(pca91,booktabs = T)
+```
+\newpage
+1981
+```{r,echo=F}
+library(readxl)
+library(kableExtra)
+
+pca81 <- read_excel("1981.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca81)<- c("dist","status")
+  pca81$status<-gsub("29","Linked",pca81$status)
+  pca81$status[is.na(pca81$status)] <- "Notlinked"
+  pca81<-as.data.frame.matrix(table(pca81))
+  pca81$Total<-pca81$Linked+pca81$Notlinked
+  pca81$complete<-paste(round(pca81$Linked/pca81$Total*100,1),"%")
+  pca81$District<-row.names(pca81)
+  row.names(pca81)<-NULL
+  Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1981",c("District","Assignee")]
+  pca81$Assignee<-Assignee$Assignee
+  pca81$Status<-ifelse(pca81$Notlinked==0,"Complete","Incomplete")
+  pca81<-pca81[,c("District","Total","Linked","Notlinked","complete","Assignee","Status")]
+kbl(pca81,booktabs = T)
+
+```
+\newpage
+1971
+```{r,echo=F}
+pca71 <- read_excel("1971.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca71)<- c("dist","status")
+  pca71$status<-gsub("29","Linked",pca71$status)
+  pca71$status[is.na(pca71$status)] <- "Notlinked"
+  pca71<-as.data.frame.matrix(table(pca71))
+  pca71$Total<-pca71$Linked+pca71$Notlinked
+  pca71$complete<-paste(round(pca71$Linked/pca71$Total*100,1),"%")
+  pca71$District<-row.names(pca71)
+  row.names(pca71)<-NULL
+  Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1971",c("District","Assignee")]
+  pca71$Assignee<-Assignee$Assignee
+    pca71$Status<-ifelse(pca71$Notlinked==0,"Complete","Incomplete")
+    pca71<-pca71[,c("District","Total","Linked","Notlinked","complete","Assignee","Status")]
+  kbl(pca71,booktabs = T)
+
+```
+
+\newpage
+1961
+```{r,echo=F}
+pca61 <- read_excel("1961.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca61)<- c("dist","status")
+  pca61$status<-gsub("29","Linked",pca61$status)
+  pca61$status[is.na(pca61$status)] <- "Notlinked"
+  pca61<-as.data.frame.matrix(table(pca61))
+  pca61$Total<-pca61$Linked+pca61$Notlinked
+  pca61$complete<-paste(round(pca61$Linked/pca61$Total*100,1),"%")
+  pca61$District<-row.names(pca61)
+  row.names(pca61)<-NULL
+ Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1961",c("District","Assignee")]
+  pca61$Assignee<-Assignee$Assignee
+  pca61$Status<-ifelse(pca61$Notlinked==0,"Complete","Incomplete")
+  pca61<-pca61[,c("District","Total","Linked","Notlinked","complete","Assignee","Status")]
+    kbl(pca61,booktabs = T)
+```
+
+
+```{r,echo=F}
+library(readxl)
+library(kableExtra)
+pca91 <- read_excel("1991.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca91)<- c("dist","status")
+  pca91$status<-gsub("29","Linked",pca91$status)
+  pca91$status[is.na(pca91$status)] <- "Notlinked"
+  pca91<-as.data.frame.matrix(table(pca91))
+  pca91$Total<-pca91$Linked+pca91$Notlinked
+  pca91$complete<-paste(round(pca91$Linked/pca91$Total*100,1),"%")
+  pca91$District<-row.names(pca91)
+  row.names(pca91)<-NULL
+  Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1991",c("District","Assignee")]
+  pca91$Assignee<-Assignee$Assignee
+pca91$Status<-ifelse(pca91$Notlinked==0,"Complete","Incomplete")
+
+pca81 <- read_excel("1981.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca81)<- c("dist","status")
+  pca81$status<-gsub("29","Linked",pca81$status)
+  pca81$status[is.na(pca81$status)] <- "Notlinked"
+  pca81<-as.data.frame.matrix(table(pca81))
+  pca81$Total<-pca81$Linked+pca81$Notlinked
+  pca81$percent_completed<-paste(round(pca81$Linked/pca81$Total*100,1),"%")
+  pca81$District<-row.names(pca81)
+  row.names(pca81)<-NULL
+  Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1981",c("District","Assignee")]
+  pca81$Assignee<-Assignee$Assignee
+  pca81$Status<-ifelse(pca81$Notlinked==0,"Complete","Incomplete")
+
+pca71 <- read_excel("1971.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca71)<- c("dist","status")
+  pca71$status<-gsub("29","Linked",pca71$status)
+  pca71$status[is.na(pca71$status)] <- "Notlinked"
+  pca71<-as.data.frame.matrix(table(pca71))
+  pca71$Total<-pca71$Linked+pca71$Notlinked
+  pca71$percent_completed<-paste(round(pca71$Linked/pca71$Total*100,1),"%")
+  pca71$District<-row.names(pca71)
+  row.names(pca71)<-NULL
+  Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1971",c("District","Assignee")]
+  pca71$Assignee<-Assignee$Assignee
+  pca71$Status<-ifelse(pca71$Notlinked==0,"Complete","Incomplete")
+
+pca61 <- read_excel("1961.xlsx")[c(-1,-2,-3),c(4,22)]
+  names(pca61)<- c("dist","status")
+  pca61$status<-gsub("29","Linked",pca61$status)
+  pca61$status[is.na(pca61$status)] <- "Notlinked"
+  pca61<-as.data.frame.matrix(table(pca61))
+  pca61$Total<-pca61$Linked+pca61$Notlinked
+  pca61$percent_completed<-paste(round(pca61$Linked/pca61$Total*100,1),"%")
+  pca61$District<-row.names(pca61)
+  row.names(pca61)<-NULL
+  Assignee<-read_xls("Assignee.xls")
+  Assignee<-Assignee[Assignee$Year=="1961",c("District","Assignee")]
+  pca61$Assignee<-Assignee$Assignee
+  pca61$Status<-ifelse(pca61$Notlinked==0,"Complete","Incomplete")
+
+tot91<-sum(pca91$Total)
+tot81<-sum(pca81$Total)
+tot71<-sum(pca71$Total)
+tot61<-sum(pca61$Total)
+totdec<-sum(tot61,tot71,tot81,tot91)
+
+lin91<-sum(pca91$Linked)
+lin81<-sum(pca81$Linked)
+lin71<-sum(pca71$Linked)
+lin61<-sum(pca61$Linked)
+lindec<-sum(lin61,lin71,lin81,lin91)
+
+unl91<-sum(pca91$Notlinked)
+unl81<-sum(pca81$Notlinked)
+unl71<-sum(pca71$Notlinked)
+unl61<-sum(pca61$Notlinked)
+unldec<-sum(unl61,unl71,unl81,unl91)
+```
+
+\newpage
+Yearly Progress
+```{r,echo=FALSE}
+yearprogress<-data.frame(matrix(data = NA,nrow = 6,ncol = 5))
+colnames(yearprogress)<-c("Year","Linked","Unlinked","Pct_comp","Total")
+yearprogress$Year<-c("2001","1991","1981","1971","1961","Total")
+yearprogress$Total<-c(23390,tot91,tot81,tot71,tot61,totdec)
+yearprogress$Linked<-c(23390,lin91,lin81,lin71,lin61,lindec)
+yearprogress$Unlinked<-c(0,unl91,unl81,unl71,unl61,unldec)
+yearprogress$Pct_comp<-round(yearprogress$Linked/yearprogress$Total*100,2)
+#yearprogress<-yearprogress[,c(yearprogress$Year,yearprogress$Unlinked,yearprogress$Linked,yearprogress$Pct_comp,yearprogress$Total)]
+kbl(yearprogress,booktabs = T)
+```
+
+
+
